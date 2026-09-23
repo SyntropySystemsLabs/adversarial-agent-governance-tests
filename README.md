@@ -10,38 +10,48 @@ The tests focus on failure modes that can emerge even when individual agents or 
 
 They are intended to ask questions such as:
 
-* What happens when an upstream source or claim changes after downstream agents have already consumed it?
-* Can independent derivation paths remain distinguishable after semantic convergence?
-* Can a system detect apparent corroboration that ultimately descends from the same epistemic ancestry?
-* What happens when summarization preserves ancestry but destroys information needed to determine material impact?
-* Can authorization or constraint state be accidentally laundered across agent handoffs?
-* Can individually acceptable inputs produce an unacceptable or unsupported composition?
+- What happens when an upstream source or claim changes after downstream agents have already consumed it?
+- Can independent derivation paths remain distinguishable after semantic convergence?
+- Can a system detect apparent corroboration that ultimately descends from the same epistemic ancestry?
+- What happens when summarization preserves ancestry but destroys information needed to determine material impact?
+- Can authorization or constraint state be accidentally laundered across agent handoffs?
+- Can individually acceptable inputs produce an unacceptable or unsupported composition?
 
 The suite specifies **observable adversarial conditions and expected governance properties**. It does not prescribe a particular internal architecture or implementation.
 
+## Current Release
+
+**v1.0 — TC01–TC07**
+
+Canonical test suite:
+
+- [AAGT_TC01-TC07_v1.0.md](tests/AAGT_TC01-TC07_v1.0.md)
+
+System-specific analyses are maintained separately:
+
+- [TC01 Proofpress Closeout](analyses/proofpress/TC01_Proofpress_Closeout.md)
+
 ## Current Test Suite
 
-Version 1.0 contains seven test cases:
+**TC01 — Upstream Retraction Across Agent Handoffs**  
+Tests whether upstream correction or withdrawal can propagate through downstream dependencies without destroying history, over-propagating falsity, or treating stale authorization as current.
 
-**TC01 — Upstream Retraction and Downstream Reassessment**
-Tests whether upstream correction or withdrawal can propagate through downstream dependencies without destroying history or automatically declaring downstream claims false.
-
-**TC02 — Convergent Derivation Under Asynchronous Epistemic and Governance Change**
+**TC02 — Convergent Derivation Under Asynchronous Epistemic and Governance Change**  
 Tests multiple derivation paths when evidence and governance conditions change independently over time.
 
-**TC03 — Semantic Convergence Without Provenance Collapse**
+**TC03 — Semantic Convergence Without Provenance Collapse**  
 Tests whether semantically equivalent claims retain distinct provenance trajectories and whether distinct provenance is incorrectly treated as proof of evidentiary independence.
 
-**TC04 — Circular Epistemic Laundering Through Multi-Agent Reuse**
+**TC04 — Circular Epistemic Laundering Through Multi-Agent Reuse**  
 Tests whether information derived from a source can return through downstream artifacts and be mistakenly treated as independent corroboration.
 
-**TC05 — Lossy Summarization and Granularity Collapse**
+**TC05 — Lossy Summarization and Granularity Collapse**  
 Tests whether systems can preserve dependency while recognizing that summarization or compression may destroy sufficient resolution for materiality analysis.
 
-**TC06 — Authority and Constraint Laundering Across Agent Handoffs**
+**TC06 — Authority and Constraint Laundering Across Agent Handoffs**  
 Tests whether historical approval, actor permissions, scope, or constraint state are incorrectly treated as intrinsic and automatically inheritable properties of an artifact.
 
-**TC07 — Compositional Failure Under Individually Admissible Inputs**
+**TC07 — Compositional Failure Under Individually Admissible Inputs**  
 Tests whether individually supportable, verified, admissible, or authorized inputs are incorrectly assumed to produce a supportable, verified, admissible, or authorized composition.
 
 ## Cross-Cutting Invariants
@@ -84,23 +94,36 @@ unless there is an independent basis for establishing that property `P` is prese
 
 These tests are intentionally architecture-neutral.
 
-A conforming system may use event sourcing, provenance graphs, relational storage, append-only ledgers, policy engines, human review, deterministic validation, model-based verification, or other mechanisms.
-
-The test concerns itself primarily with **observable behavior and preserved distinctions**, rather than requiring a particular implementation.
+A system may use event sourcing, provenance graphs, relational storage, append-only ledgers, policy engines, human review, deterministic validation, model-based verification, or other mechanisms. The suite concerns itself primarily with **observable behavior and preserved distinctions**, rather than requiring a particular implementation.
 
 The suite also does not assume that every unresolved condition should cause permanent rejection. Reassessment, renewed verification, qualification, renewed authorization, or other explicit state transitions may be appropriate depending on the system.
 
 ## Systems Under Test
 
-The first test case was developed during informal technical discussion around Proofpress and subsequently used to examine changes introduced in that project's claim-withdrawal and dependency-reassessment architecture.
+TC01 originated during informal technical discussion around [Proofpress](https://github.com/chenmingtang830/proofpress) and was subsequently used to evaluate changes introduced in that project's claim-withdrawal and dependency-reassessment architecture.
 
 The broader TC02–TC07 suite was developed from anticipated failure modes in provenance-heavy multi-agent research workflows.
 
 Reference to a system in this repository does not imply endorsement, affiliation, certification, or a claim that the system currently fails a given test unless an accompanying analysis explicitly demonstrates that result.
 
-## Status
+## Repository Structure
 
-**Current release:** v1.0
+```text
+.
+├── README.md
+├── LICENSE
+├── CITATION.cff
+├── CONTRIBUTING.md
+├── tests/
+│   └── AAGT_TC01-TC07_v1.0.md
+└── analyses/
+    └── proofpress/
+        └── TC01_Proofpress_Closeout.md
+```
+
+Future system-specific execution reports should be added under `analyses/<system>/` rather than modifying the canonical test specification.
+
+## Status
 
 The suite is deliberately bounded. Additional tests should preferably arise from observed implementation behavior, adversarial evaluation, or newly identified architectural failure modes rather than from indefinitely expanding a theoretical catalog.
 
@@ -110,10 +133,10 @@ Developed by **D.S. Nelson / Syntropy Systems Labs**.
 
 ## License
 
-See `LICENSE` for reuse terms.
+This repository is licensed under the **Apache License 2.0**. See [LICENSE](LICENSE).
 
-Test cases may be implemented against other systems, extended, or adapted in accordance with the repository license. Attribution to the original suite is appreciated and, where required by the selected license, must be preserved.
+The license applies to the materials in this repository. It does **not** grant rights to separate unpublished or proprietary Syntropy Systems Labs architectures, implementations, schemas, constraint-resolution mechanisms, orchestration logic, or other material not included in this repository.
 
 ## Citation
 
-Citation metadata is provided in `CITATION.cff`.
+Citation metadata is provided in [CITATION.cff](CITATION.cff).
