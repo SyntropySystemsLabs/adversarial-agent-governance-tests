@@ -6,13 +6,13 @@ Contributions that improve the rigor, reproducibility, or coverage of the Advers
 
 Useful contributions include:
 
-* new adversarial test cases derived from observed system behavior;
-* refinements that make existing expectations more implementation-neutral;
-* reproducible execution results against specific systems;
-* counterexamples showing that an expected behavior is underspecified or incorrect;
-* additional failure conditions;
-* terminology corrections;
-* references to relevant research or prior art.
+- new adversarial test cases derived from observed system behavior;
+- refinements that make existing expectations more implementation-neutral;
+- reproducible execution results against specific systems;
+- counterexamples showing that an expected behavior is underspecified or incorrect;
+- additional failure conditions;
+- terminology corrections;
+- references to relevant research or prior art.
 
 ## New Test Cases
 
@@ -33,14 +33,20 @@ Tests should describe **what a system must preserve or distinguish** without unn
 
 Results against a particular system should distinguish among:
 
-* implemented;
-* partially implemented;
-* not implemented;
-* not established;
-* not applicable;
-* unable to determine.
+- implemented;
+- partially implemented;
+- not implemented;
+- not established;
+- not applicable;
+- unable to determine.
 
 `NOT ESTABLISHED` must not be silently interpreted as failure.
+
+Implementation-specific results should be placed under:
+
+`analyses/<system>/`
+
+rather than embedded in the canonical test suite.
 
 ## Scope
 
@@ -50,6 +56,6 @@ Implementation-specific architectural proposals may be useful as discussion mate
 
 ## Contributions and Licensing
 
-By submitting a contribution to this repository, you agree that your contribution may be distributed under the repository's license.
+By submitting a contribution to this repository, you agree that your contribution may be distributed under the repository's Apache License 2.0.
 
 Please identify external sources, prior work, or third-party material where applicable.
